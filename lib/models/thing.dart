@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+class Thing {
+  final String title;
+  final String date;
+  final String description;
+  final String number;
+  final String time;
+  String image;
+  final String status;
+  final String location;
+  final String userEmail;
+  final String userId;
+  final String userName;
+  final bool isFavorite;
+  final bool confirmed;
+  final int responsed;
+
+  Thing({
+    @required this.title,
+    @required this.date,
+    @required this.description,
+    @required this.number,
+    @required this.time,
+    @required this.image,
+    @required this.status,
+    @required this.location,
+    @required this.userEmail,
+    @required this.userId,
+    @required this.userName,
+    this.isFavorite = false,
+    this.confirmed = false,
+    this.responsed = -1,
+  });
+}
