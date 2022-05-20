@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:project1/pages/confirm_back.dart';
-import 'package:project1/pages/item_admin.dart';
+
 import 'package:project1/pages/profile.dart';
 import 'package:project1/pages/confirm.dart';
 import 'pages/account.dart';
 import 'first_page.dart';
-import 'found_thing_page.dart';
+
 import 'pages/messages.dart';
-import 'missing_page.dart';
+
 import 'scoped_model/main.dart';
-import 'pages/thing_list.dart';
-import 'pages/support.dart';
+import 'pages/myConfirms_list.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'pages/profile.dart';
 import 'pages/auth_page.dart';
 import 'pages/home.dart';
 import 'pages/add_page.dart';
-import 'pages/items.dart';
-import 'pages/item_admin.dart';
-import 'models/thing.dart';
 import 'pages/item.dart';
-import 'pages/confirm.dart';
+import 'pages/confirmItems_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,17 +45,10 @@ class MyAppState extends State<MyApp> {
             '/home': (BuildContext context) => HomePage(),
             '/messages': (BuildContext context) => MessagesPage(null),
             '/add': (BuildContext context) => AddPage(""),
-            // '/admin': (BuildContext context) =>
-            // ItemAdminPage(addItem, updateItem, deleteItem, items),
-
             '/account': (BuildContext context) => AccountPage(""),
-            '/support': (BuildContext context) => SupportPage("", "", null),
-            //'/things': (BuildContext context) => Items(),
-            '/missing': (BuildContext context) => LostItems(),
-            '/found': (BuildContext context) => FoundItems(),
+            '/myConfirms': (BuildContext context) => myConfirmsList(null),
             '/profile': (BuildContext context) => ProfilePage(""),
-            '/items': (BuildContext context) => ItemsPage(),
-            // '/confirm': (BuildContext context) => ConfirmItem(null),
+            '/items': (BuildContext context) => ConfirmItemList(null),
           },
           onGenerateRoute: (RouteSettings settings) {
             final List<String> pathElements = settings.name.split('/');

@@ -99,6 +99,27 @@ mixin ThingsModel on ThingModel {
     notifyListeners();
   }
 
+  void addConfirmData(String image, String money, String description) {
+    final Thing updatedThing = Thing(
+        title: selectedthing.title,
+        date: selectedthing.date,
+        description: selectedthing.description,
+        number: selectedthing.number,
+        time: selectedthing.time,
+        image: selectedthing.image,
+        status: selectedthing.status,
+        location: selectedthing.location,
+        userEmail: selectedthing.userEmail,
+        userId: selectedthing.userId,
+        userName: selectedthing.userName,
+        confirmImage: image,
+        confirmMoney: money,
+        confirmDescription: description);
+
+    _things[selectedThingIndex] = updatedThing;
+    notifyListeners();
+  }
+
   List<Thing> get displayedThings {
     if (_showFavorites && _showLost == -1) {
       return _things.where((Thing thing) => thing.isFavorite).toList();
@@ -181,7 +202,8 @@ mixin ThingsModel on ThingModel {
   }
 
   void updateThing(String title, String description, String date, String number,
-      String location, String time, String image, String status) {
+      String location, String time, String image, String status,
+      [String confirmimage, String confirmmoney, String confirmdescription]) {
     final Thing updatedThing = Thing(
         title: title,
         date: date,
@@ -193,7 +215,10 @@ mixin ThingsModel on ThingModel {
         location: location,
         userEmail: _authenticatedUser.email,
         userId: _authenticatedUser.id,
-        userName: _authenticatedUser.name);
+        userName: _authenticatedUser.name,
+        confirmImage: confirmimage,
+        confirmMoney: confirmmoney,
+        confirmDescription: confirmdescription);
 
     _things[selectedThingIndex] = updatedThing;
     notifyListeners();

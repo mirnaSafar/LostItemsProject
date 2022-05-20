@@ -6,13 +6,14 @@ import 'package:project1/pages/messages.dart';
 import '../widgets/items/userName_tag.dart';
 import '../scoped_model/main.dart';
 import 'package:scoped_model/scoped_model.dart';
+import '../models/thing.dart';
 
 class MyConfirmRequest extends StatelessWidget {
-  final String money;
-  final String desc;
-  final int index;
+  // final int index;
+  final Thing thing;
 
-  MyConfirmRequest(this.desc, this.money, this.index);
+  MyConfirmRequest(this.thing);
+
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -30,23 +31,22 @@ class MyConfirmRequest extends StatelessWidget {
               return ListView(
                 padding: EdgeInsets.all(10.0),
                 children: [
-                  //
                   Card(
                     child: Column(
                       children: <Widget>[
-                        UserNameTag(model.allThings[index].userName),
-                        Image.asset(model.allThings[index].image),
+                        UserNameTag(thing.userName),
+                        Image.asset(thing.confirmImage),
                         SizedBox(
                           height: 10.0,
                         ),
-                        Text(money),
+                        Text(thing.confirmMoney),
                         SizedBox(
                           height: 10.0,
                         ),
                         Container(
                           padding: EdgeInsets.all(20.0),
                           child: Text(
-                            desc,
+                            thing.confirmDescription,
                             style: TextStyle(fontSize: 15.0),
                           ),
                         ),
@@ -58,11 +58,12 @@ class MyConfirmRequest extends StatelessWidget {
                   ),
                   ScopedModelDescendant<MainModel>(builder:
                       (BuildContext context, Widget child, MainModel model) {
-                    if (model.response == null) {
+                    model.selectThing(null);
+                    if (thing.responsed == -1) {
                       return Container();
                     }
 
-                    if (model.response) {
+                    if (thing.responsed == 1) {
                       return Container(
                         color: Colors.lightGreen,
                         padding: EdgeInsets.all(10.0),

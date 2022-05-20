@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1/missing_page.dart';
-import 'package:project1/found_thing_page.dart';
+
 import 'package:project1/pages/home.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped_model/main.dart';
@@ -8,7 +7,6 @@ import '../widgets/profileDrawer.dart';
 import '../widgets/items/items.dart';
 
 class ProfilePage extends StatelessWidget {
-  // int thingindex;
   final String userName;
   ProfilePage(this.userName);
 

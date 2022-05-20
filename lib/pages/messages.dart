@@ -5,6 +5,9 @@ import 'package:project1/pages/confirm.dart';
 import '../widgets/bottombar.dart';
 import '../widgets/drawer.dart';
 
+import '../scoped_model/main.dart';
+import 'package:scoped_model/scoped_model.dart';
+
 class MessagesPage extends StatefulWidget {
   final int thingIndex;
   MessagesPage(this.thingIndex);
@@ -57,7 +60,18 @@ class MessagesPageState extends State<MessagesPage> {
                               "Please pick a post to send confirm request")),
                     )
                   : ConfirmItem(widget.thingIndex),
-              ConfirmItemList("desc", "money", widget.thingIndex)
+              ScopedModelDescendant<MainModel>(builder:
+                  (BuildContext context, Widget child, MainModel model) {
+                if (widget.thingIndex != null)
+                  model.selectThing(widget.thingIndex);
+                return model.displayConfirmedItems.length == 0
+                    ? Container(
+                        alignment: Alignment.center,
+                        // padding: EdgeInsets.symmetric(vertical: 300.0),
+                        child: Text("No Confirm Requests Yet"),
+                      )
+                    : ConfirmItemList(widget.thingIndex);
+              })
             ],
           ),
           bottomNavigationBar: buildBottomNavigator(context, _selectedindex),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1/pages/items.dart';
+
 import 'package:project1/pages/thing_list.dart';
 
 import '../widgets/bottombar.dart';
@@ -13,7 +13,7 @@ import '../scoped_model/things.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../models/thing.dart';
 import '../scoped_model/main.dart';
-import '../found_thing_page.dart';
+
 import '../widgets/helpers/13.1 ensure_visible.dart.dart';
 
 class AddPage extends StatefulWidget {
@@ -293,7 +293,7 @@ class AddPageState extends State<AddPage> {
       return;
     }
     _formKey.currentState.save();
-    // _showAlertDialog(context);
+
     _formData['image'] = widget.image;
     if (selectedThingIndex == null) {
       addThing(
@@ -303,23 +303,12 @@ class AddPageState extends State<AddPage> {
           _phoneTextController.text,
           _locationTextController.text,
           _timeTextController.text,
-          // _nameTextController.text,
           _formData['image'],
           _formData['status']);
-      // if (_formData['status'] == 'found') {
-      //   model.toggleStatusDisplayMode(true);
-      // } else {
-      //   model.toggleStatusDisplayMode(false);
-      // }
 
       Navigator.pushReplacementNamed(context, '/home').then((_) => {
             setSelectedThing(null),
           });
-      //   Navigator.pushNamed(context, '/found')
-      //       .then((_) => setSelectedThing(null));
-      // else
-      //   Navigator.pushNamed(context, '/missing')
-      //       .then((_) => setSelectedThing(null));
     } else {
       updateThing(
           _nameTextController.text,
@@ -331,32 +320,9 @@ class AddPageState extends State<AddPage> {
           _formData['image'],
           _formData['status']);
     }
-    // if (_formData['status'] == 'found')
-    //   Navigator.pushNamed(context, '/items')
-    //       .then((_) => setSelectedThing(null));
-    // else
+
     Navigator.pushNamed(context, '/home').then((_) => setSelectedThing(null));
   }
-
-  // _showAlertDialog(BuildContext context) {
-  //   showDialog(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: Text('Did you lost this Item or Found it ?'),
-  //           actions: [
-  //             FlatButton(
-  //                 onPressed: () =>
-  //                     {Navigator.pushReplacementNamed(context, '/items')},
-  //                 child: Text('Lost it')),
-  //             FlatButton(
-  //                 onPressed: () =>
-  //                     {Navigator.pushReplacementNamed(context, '/items')},
-  //                 child: Text(' Found It '))
-  //           ],
-  //         );
-  //       });
-  // }
 
   Widget _addItem(BuildContext context, Thing thing) {
     return GestureDetector(
@@ -372,9 +338,6 @@ class AddPageState extends State<AddPage> {
                 SizedBox(
                   height: 10.0,
                 ),
-                // _buildEmailTextField(context),
-                // SizedBox(height: 20.5),
-
                 _buildTimeTextField(thing),
                 SizedBox(height: 20.5),
                 _buildStatusTextField(thing),
@@ -429,55 +392,3 @@ class AddPageState extends State<AddPage> {
     });
   }
 }
-                  // TextFormField(
-                  //     decoration:
-                  //         InputDecoration(labelText: "Locate where you found it")),
-                  // LocationInput(),
-                  // SizedBox(height: 10.0),
-                  // _buildTimeTextField(context),
-                  // SizedBox(
-                  //   height: 25.5,
-                  // ),
-                  // TextFormField(
-                  //     decoration: InputDecoration(
-                  //         labelText: "Input the time when you found it")),
-                 
-                 
-                  
-                  // RaisedButton(
-                  //   onPressed: () {},
-                  //   child: Text("Post"),
-                  // ),
-                 
-
-// Container(
-//   padding: EdgeInsets.all(10.0),
-//   child: Column(children: [
-//     _buildNameTextField(context),
-    // SizedBox(
-    //   height: 10.5,
-    // ),
-//     ImageInput(),
-//     SizedBox(
-//       height: 10.5,
-//     ),
-//     _buildDescriptionTextField(context),
-//     SizedBox(
-//       height: 10.5,
-//     ),
-//     _buildDateTextField(context),
-//     SizedBox(
-//       height: 10.5,
-//     ),
-//     _buildLocationTextField(context),
-//     SizedBox(
-//       height: 10.5,
-//     ),
-//     _buildTimeTextField(context),
-//     SizedBox(
-//       height: 10.5,
-//     ),
-//     _buildEmailTextField(context),
-//     SizedBox(height: 10.5),
-//     _buildPhoneNumberTextField(context),
-//     SizedBox(height: 10.5),

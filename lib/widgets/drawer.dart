@@ -55,7 +55,7 @@ Widget buildDrawer(BuildContext context) {
         leading: Icon(Icons.question_answer),
         title: Text('Confirm requests'),
         onTap: () {
-          Navigator.pushNamed(context, '/support');
+          Navigator.pushNamed(context, '/myConfirms');
         },
       ),
       Divider(),

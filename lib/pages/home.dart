@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1/pages/items.dart';
-import '../found_thing_page.dart';
-import '../missing_page.dart';
+
 import '../scoped_model/main.dart';
 import '../scoped_model/things.dart';
 
@@ -11,7 +9,6 @@ import '../widgets/drawer.dart';
 import '../widgets/items/items.dart';
 import '../models/thing.dart';
 import 'confirm.dart';
-import 'items.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,8 +62,6 @@ class HomePageState extends State<HomePage> {
                   ),
                   IconButton(
                     icon: Icon(
-                      // model.displayLostOnly
-                      //     ? Icons.search_off
                       Icons.search_outlined,
                       color: Colors.black,
                     ),
@@ -77,10 +72,7 @@ class HomePageState extends State<HomePage> {
                   ),
                   IconButton(
                     icon: Icon(
-                      // model.displayLostOnly
-                      //     ? Icons.search_off
                       Icons.all_inbox,
-                      // color: Colors.,
                     ),
                     onPressed: () {
                       model.toggleStatusDisplayMode(-1);
@@ -92,25 +84,8 @@ class HomePageState extends State<HomePage> {
                 title: Container(
                   child: Text(title),
                 ),
-                // bottom: TabBar(
-                //   unselectedLabelColor: Colors.white,
-                //   // tabs: [
-                //   //   Tab(
-                //   //     text: 'Missing',
-                //   //     icon: Icon(Icons.search_off),
-                //   //   ),
-                //   //   Tab(
-                //   //     text: 'Found',
-                //   //     icon: Icon(Icons.search_outlined),
-                //   //   )
-                //   // ],
-                // ),
               ),
-              body: Container(child: Items()
-                  // child: TabBarView(children: [, Items()]),
-                  ),
-              // ListItems(items, updateItems),FoundThingPage()
-
+              body: Container(child: Items()),
               bottomNavigationBar:
                   buildBottomNavigator(context, _selectedindex));
         }));

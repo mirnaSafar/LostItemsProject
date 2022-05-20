@@ -6,15 +6,14 @@ import 'package:project1/pages/myConfirm_request.dart';
 import '../scoped_model/main.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-// import '../models/thing.dart';
-class SupportPage extends StatelessWidget {
-  final String money;
-  final String desc;
+import '../models/thing.dart';
+
+class myConfirmsList extends StatelessWidget {
   final int index;
 
-  SupportPage(this.desc, this.money, this.index);
+  myConfirmsList(this.index);
   Widget _buildConfirmRequestButton(
-      BuildContext context, int index, MainModel model) {
+      BuildContext context, int index, MainModel model, Thing thing) {
     return IconButton(
       icon: Icon(Icons.confirmation_num_outlined),
       onPressed: () {
@@ -22,10 +21,10 @@ class SupportPage extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return MyConfirmRequest(desc, money, index);
+              return MyConfirmRequest(thing);
             },
           ),
-        );
+        ).then((_) => model.selectThing(null));
       },
     );
   }
@@ -42,8 +41,11 @@ class SupportPage extends StatelessWidget {
           builder: (BuildContext context, Widget child, MainModel model) {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                return model.allThings.length == 0
-                    ? Container()
+                return model.displayConfirmedItems.length == 0
+                    ? Container(
+                        alignment: Alignment.center,
+                        child: Text("you did not send confirm requests yet"),
+                      )
                     : Container(
                         child: Column(
                           children: <Widget>[
@@ -57,7 +59,10 @@ class SupportPage extends StatelessWidget {
                               subtitle: Text(
                                   '${model.displayConfirmedItems[index].status}'),
                               trailing: _buildConfirmRequestButton(
-                                  context, index, model),
+                                  context,
+                                  index,
+                                  model,
+                                  model.displayConfirmedItems[index]),
                             ),
                             Divider()
                           ],
@@ -68,24 +73,5 @@ class SupportPage extends StatelessWidget {
             );
           },
         ));
-    // ListView(
-    //   children: <Widget>[
-    //     ScopedModelDescendant<MainModel>(
-    //         builder: (BuildContext context, Widget child, MainModel model) {
-    //       return ListTile(
-    //         leading: CircleAvatar(
-    //           backgroundImage: AssetImage('assets/food.jpg'),
-    //         ),
-    //         title: Text(model.allThings[index].userName),
-    //         subtitle: Text('money? ${money}\n' + desc),
-    //         trailing: _buildConfirmRequestButton(context),
-    //       );
-    //     }),
-    //     Divider()
-    //   ],
-    // )
-    // );
   }
-  // itemCount: model.allThings.length,
-
 }

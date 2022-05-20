@@ -12,9 +12,6 @@ import '../models/thing.dart';
 class ImageInput extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ImageInputState();
-  // final int index;
-  // final Thing thing;
-  // ImageInput(this.thing);
 }
 
 class _ImageInputState extends State<ImageInput> {
@@ -27,14 +24,9 @@ class _ImageInputState extends State<ImageInput> {
     setState(() {
       this.image = imageTemporary;
       Navigator.pop(context);
-      // widget.thing.image = image.path;
+
       AddPage(image.path);
       AccountPage(image.path);
-
-      // ScopedModelDescendant<MainModel>(
-      //     builder: (BuildContext context, Widget child, MainModel model) {
-      //   thing.image = image;
-      // });
     });
   }
 

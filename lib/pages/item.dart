@@ -73,7 +73,7 @@ class ThingPage extends StatelessWidget {
       return Future.value(false);
     }, child: ScopedModelDescendant<MainModel>(
       builder: (BuildContext context, Widget child, MainModel model) {
-        final Thing thing = model.allThings[thingIndex];
+        final Thing thing = model.displayedThings[thingIndex];
         return Scaffold(
           appBar: AppBar(
             title: Text(thing.title),
@@ -95,7 +95,6 @@ class ThingPage extends StatelessWidget {
               thing.date.isNotEmpty
                   ? {
                       _buildInformationRow('At Date:  ', thing.date),
-                      // Divider(),
                     }
                   : Container(),
               thing.time.isEmpty
